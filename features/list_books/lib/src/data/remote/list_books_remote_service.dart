@@ -1,6 +1,7 @@
 import 'package:network/network.dart';
 
 import '../list_books_service.dart';
+import 'models/list_book_response.dart';
 
 class ListBooksRemoteService implements ListBooksService {
   static const _path = 'volumes';
@@ -16,7 +17,7 @@ class ListBooksRemoteService implements ListBooksService {
   final NetworkService _networkService;
 
   @override
-  Future fetchBooks({
+  Future<ListBooksResponse?> fetchBooks({
     int index = 0,
     String? query,
   }) async {
@@ -25,5 +26,9 @@ class ListBooksRemoteService implements ListBooksService {
       _indexQuery: index,
       _qQuery: query ?? 'development',
     });
+    if (response.data != null) {
+      return ListBooksResponse.fromJson(response.data!);
+    }
+    return null;
   }
 }

@@ -1,11 +1,10 @@
 import 'package:core/core.dart';
 import 'package:dio/dio.dart';
-import 'package:network/src/models/network_response.dart';
-import 'package:network/src/network_service.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+import '../models/network_response.dart';
+import '../network_service.dart';
 import 'dio.dart';
-import 'exceptions/dio_service_exception.dart';
 
 class DioService implements NetworkService {
   const DioService._({

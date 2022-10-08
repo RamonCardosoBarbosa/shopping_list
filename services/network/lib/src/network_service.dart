@@ -1,6 +1,5 @@
-import 'package:network/src/models/models.dart';
-
 import 'dio/dio.dart';
+import 'models/models.dart';
 
 abstract class NetworkService {
   Future<NetworkResponse> get(

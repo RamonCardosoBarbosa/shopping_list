@@ -6,6 +6,8 @@ import '../../models/models.dart';
 class DioNetworkResponseMapper implements Mapper<Response, NetworkResponse> {
   @override
   NetworkResponse map(Response input) {
-    return NetworkResponse();
+    return NetworkResponse(
+      data: input.data,
+    );
   }
 }

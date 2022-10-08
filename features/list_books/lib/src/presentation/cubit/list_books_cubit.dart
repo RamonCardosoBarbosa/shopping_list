@@ -12,9 +12,14 @@ class ListBooksCubit extends Cubit<ListBooksState> {
   final ListBooksRepository _repository;
 
   Future<void> fetchBooks() async {
+    emit(const ListBooksLoadInProgress());
     try {
-      emit(const ListBooksLoadFailure());
-      await _repository.fetchBooks();
+      final books = await _repository.fetchBooks();
+      if (books != null) {
+        emit(ListBooksLoadSuccess(books: books));
+      } else {
+        emit(const ListBooksLoadEmptySuccess());
+      }
     } on NetworkException catch (_) {
       emit(const ListBooksLoadFailure());
     }

@@ -1,5 +1,7 @@
+import 'models/models.dart';
+
 abstract class ListBooksRepository {
-  Future fetchBooks({
+  Future<List<Book>?> fetchBooks({
     int index = 0,
     String? query,
   });

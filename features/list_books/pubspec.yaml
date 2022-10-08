@@ -11,7 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
 
+  equatable: ^2.0.5
   flutter_bloc: ^8.1.1
+
+  core:
+    path: ../../services/core
 
   design_system:
     path: ../../services/design_system
