@@ -31,7 +31,7 @@ class DioService implements NetworkService {
     try {
       final response = await _dio.get(path, queryParameters: queryParameters);
       return _responseMapper.map(response);
-    } on DioError catch (error) {
+    } on DioError catch (_) {
       throw DioServiceException();
     }
   }
