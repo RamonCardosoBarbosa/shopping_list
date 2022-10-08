@@ -8,7 +8,7 @@ abstract class NetworkService {
     Map<String, dynamic> queryParameters,
   });
 
-  factory NetworkService.getClient() {
-    return DioService.getInstance();
+  factory NetworkService.getClient({required String baseUrl}) {
+    return DioService.getInstance(baseUrl: baseUrl);
   }
 }

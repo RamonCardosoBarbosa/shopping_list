@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:network/network.dart';
 
+import 'data/list_books_repositoy_impl.dart';
+import 'data/remote/list_books_remote_service.dart';
+import 'presentation/cubit/cubit.dart';
 import 'presentation/presentation.dart';
 
 class ListBooksFeature extends StatelessWidget {
@@ -14,7 +18,14 @@ class ListBooksFeature extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _networkService.get('https://www.googleapis.com/books/v1/volumes?q=ios&maxResults=20&startIndex=0');
-    return const ListBooksScreen();
+    return BlocProvider<ListBooksCubit>(
+      create: (context) => ListBooksCubit(
+        repository: ListBooksRepositoryImpl(
+          remoteService:
+              ListBooksRemoteService(networkService: _networkService),
+        ),
+      )..fetchBooks(),
+      child: const ListBooksScreen(),
+    );
   }
 }

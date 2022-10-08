@@ -9,6 +9,7 @@ class ShoppingListApp extends StatelessWidget with Routes {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: router,
+      // It could be localized with internationalization
       title: 'Shopping List',
       theme: ThemeData(
         primarySwatch: Colors.blue,

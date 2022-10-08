@@ -11,6 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_bloc: ^8.1.1
+
+  design_system:
+    path: ../../services/design_system
+
   network:
     path: ../../services/network
 

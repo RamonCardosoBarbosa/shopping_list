@@ -6,7 +6,9 @@ class ServiceLocator {
 
   static void setup() {
     instance.registerLazySingleton<NetworkService>(
-      () => NetworkService.getClient(),
+      () => NetworkService.getClient(
+        baseUrl: 'https://www.googleapis.com/books/v1/',
+      ),
     );
   }
 }

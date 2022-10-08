@@ -2,6 +2,7 @@ import 'package:core/core.dart';
 import 'package:dio/dio.dart';
 import 'package:network/src/models/network_response.dart';
 import 'package:network/src/network_service.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'dio.dart';
 import 'exceptions/dio_service_exception.dart';
@@ -13,9 +14,19 @@ class DioService implements NetworkService {
   })  : _dio = dio,
         _responseMapper = responseMapper;
 
-  factory DioService.getInstance() {
+  factory DioService.getInstance({
+    required String baseUrl,
+  }) {
+    final dio = Dio(BaseOptions(baseUrl: baseUrl));
+    dio.interceptors.add(PrettyDioLogger(
+      requestHeader: true,
+      requestBody: true,
+      responseBody: true,
+      responseHeader: false,
+      compact: false,
+    ));
     return DioService._(
-      dio: Dio(),
+      dio: dio,
       responseMapper: DioNetworkResponseMapper(),
     );
   }

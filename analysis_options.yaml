@@ -2,8 +2,6 @@ include: package:flutter_lints/flutter.yaml
 
 linter:
   rules:
-    slash_for_doc_comments: true
-    public_member_api_docs: true
     prefer_const_constructors: true
     prefer_relative_imports: true
     curly_braces_in_flow_control_structures: true
